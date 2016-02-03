@@ -3,7 +3,7 @@
 
 ### 安装插件
 #### Package Control安装
-1. `Ctrl+\``调出终端
+1. ```Ctrl+````调出终端
 2. 黏贴以下代码到终端安装
 ```
 import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler() )  ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20') ).read())
