@@ -8,8 +8,9 @@ pip install shadowsocks
 
 2. 编配文件
 ```
+vi /etc/shadowsocks.json
 {
-    "server":"xx.xx.xx.xx",
+    "server":"0.0.0.0",         //此处需要设置为0.0.0.0，否则可能会报"socket.error: [Errno 99] Cannot assign requested address"
     "server_port":xxxx,
     "local_address": "127.0.0.1",
     "local_port":1080,
@@ -22,7 +23,7 @@ pip install shadowsocks
 ```
 
 3. 启动
-`sslocal -c /etc/shadowsocks.json -d start`
+`ssserver -c /etc/shadowsocks.json -d start`
 加上`-d`参数是后台启动
 
 4. 自动启动
