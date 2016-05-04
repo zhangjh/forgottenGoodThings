@@ -1,8 +1,10 @@
 
 #### shadowsocks linux
 1. 安装
+```
 apt-get install python-pip
 pip install shadowsocks
+```
 
 2. 编配文件
 ```
