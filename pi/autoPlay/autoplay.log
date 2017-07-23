@@ -1,0 +1,66 @@
++ player=omxplayer
++ audioPath=/home/pi/autoPlay/audio
++ URL_PRE=http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text=
++ init
++ [ -d /home/pi/autoPlay/audio ]
++ rm -rf /home/pi/autoPlay/audio/
++ date +%R
++ time=23:41
++ text='现在时间23:41'
++ doCmd http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text='现在时间23:41' /home/pi/autoPlay/audio/time.mp3
++ url=http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text='现在时间23:41'
++ saveFile=/home/pi/autoPlay/audio/time.mp3
++ dirname /home/pi/autoPlay/audio/time.mp3
++ dirname=/home/pi/autoPlay/audio
++ [ ! -d /home/pi/autoPlay/audio ]
++ mkdir -p /home/pi/autoPlay/audio
++ wget -O /home/pi/autoPlay/audio/time.mp3 http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text='现在时间23:41'
+--2017-07-22 23:41:45--  http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text='%E7%8E%B0%E5%9C%A8%E6%97%B6%E9%97%B423:41'
+正在解析主机 tts.baidu.com (tts.baidu.com)... 153.3.236.19
+正在连接 tts.baidu.com (tts.baidu.com)|153.3.236.19|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度：3528 (3.4K) [audio/mp3]
+正在保存至: “/home/pi/autoPlay/audio/time.mp3”
+
+     0K ...                                                   100%  140M=0s
+
+2017-07-22 23:41:45 (140 MB/s) - 已保存 “/home/pi/autoPlay/audio/time.mp3” [3528/3528])
+
++ [ 0 -ne 0 ]
++ playAudio /home/pi/autoPlay/audio/time.mp3
++ file=/home/pi/autoPlay/audio/time.mp3
++ omxplayer /home/pi/autoPlay/audio/time.mp3
+Audio codec mp3 channels 1 samplerate 8000 bitspersample 16
+Subtitle count: 0, state: off, index: 1, delay: 0
+have a nice day ;)
++ python getWeather.py
++ weatherText=今天天气 晴 气温 40 ~ 29℃
++ echo 今天天气 晴 气温 40 ~ 29℃
++ sed -e s/ /%20%20/g -e s/ /%20%20/g -e s/~/到/g
++ weatherText=今天天气%20%20晴%20%20气温%20%2040%20%20到%20%2029℃
++ [ 0 -ne 0 ]
++ doCmd http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text="今天天气%20%20晴%20%20气温%20%2040%20%20到%20%2029℃" /home/pi/autoPlay/audio/weather.mp3
++ url=http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text="今天天气%20%20晴%20%20气温%20%2040%20%20到%20%2029℃"
++ saveFile=/home/pi/autoPlay/audio/weather.mp3
++ dirname /home/pi/autoPlay/audio/weather.mp3
++ dirname=/home/pi/autoPlay/audio
++ [ ! -d /home/pi/autoPlay/audio ]
++ wget -O /home/pi/autoPlay/audio/weather.mp3 http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text="今天天气%20%20晴%20%20气温%20%2040%20%20到%20%2029℃"
+--2017-07-22 23:41:48--  http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text=%22%E4%BB%8A%E5%A4%A9%E5%A4%A9%E6%B0%94%20%20%E6%99%B4%20%20%E6%B0%94%E6%B8%A9%20%2040%20%20%E5%88%B0%20%2029%E2%84%83%22
+正在解析主机 tts.baidu.com (tts.baidu.com)... 153.3.236.19
+正在连接 tts.baidu.com (tts.baidu.com)|153.3.236.19|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度：4248 (4.1K) [audio/mp3]
+正在保存至: “/home/pi/autoPlay/audio/weather.mp3”
+
+     0K ....                                                  100%  162M=0s
+
+2017-07-22 23:41:49 (162 MB/s) - 已保存 “/home/pi/autoPlay/audio/weather.mp3” [4248/4248])
+
++ [ 0 -ne 0 ]
++ playAudio /home/pi/autoPlay/audio/weather.mp3
++ file=/home/pi/autoPlay/audio/weather.mp3
++ omxplayer /home/pi/autoPlay/audio/weather.mp3
+Audio codec mp3 channels 1 samplerate 8000 bitspersample 16
+Subtitle count: 0, state: off, index: 1, delay: 0
+have a nice day ;)

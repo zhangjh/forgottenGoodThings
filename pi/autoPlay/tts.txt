@@ -1,0 +1,6 @@
+http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=2&text=这里是需要转换为语音的文本内容
+
+lan参数是语言，zh-中文，en-英文
+spd参数是语速，1-9，数字越大语速越快，朗读中文感觉6最合适
+text参数就是需要语音合成的文本内容
+
