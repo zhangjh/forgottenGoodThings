@@ -60,12 +60,17 @@ if [ "X${version}" == "X" ];then
 fi
 
 #5. 挂载硬盘
-if [ ! -e /mnt/share ];then
-    mkdir -p /mnt/share
-fi
-df -h | grep -q "/mnt/share"
-if [ $? -ne 0 ];then
-    mount /dev/sda1 /mnt/share
+fdisk -l | grep -q "/dev/sda"
+if [ $? -eq 0 ];then
+    if [ ! -e /mnt/share ];then
+        mkdir -p /mnt/share
+    fi
+    df -h | grep -q "/mnt/share"
+    if [ $? -ne 0 ];then
+        mount /dev/sda1 /mnt/share
+    fi
+    #8. 自动挂载
+    echo "/dev/sda1 /mnt/share/ ntfs-3g slient,umask=0,locale=zh_CN.utf8 0 0" >> /etc/fstab
 fi
 
 #6. 设置vimrc
@@ -73,9 +78,6 @@ cp /home/pi/initConfig/vimrc.local /etc/vim/
 
 #7. 设置开机启动
 cp /home/pi/initConfig/rc.local /etc/
-
-#8. 自动挂载
-echo "/dev/sda1 /mnt/share/ ntfs-3g slient,umask=0,locale=zh_CN.utf8 0 0" >> /etc/fstab
 
 #9. 设置alias
 echo "alias ll='ls -l'" > /home/pi/.bash_aliases
