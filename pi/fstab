@@ -1,6 +1,0 @@
-proc            /proc           proc    defaults          0       0
-PARTUUID=21fa77df-01  /boot           vfat    defaults          0       2
-PARTUUID=21fa77df-02  /               ext4    defaults,noatime  0       1
-# a swapfile is not a swap partition, no line here
-#   use  dphys-swapfile swap[on|off]  for that
-/dev/sda1 /mnt/share/ ntfs-3g slient,umask=0,locale=zh_CN.utf8 0 0
