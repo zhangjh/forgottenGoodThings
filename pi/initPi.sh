@@ -97,6 +97,8 @@ function installSamba(){
     if [ "X${version}" == "X" ];then
         apt-get install samba
         cp ./initConfig/smb.conf /etc/samba
+        /etc/init.d/smbd restart
+        smbpasswd -a pi
     fi
 }
 
