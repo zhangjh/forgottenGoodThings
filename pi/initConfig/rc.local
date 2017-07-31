@@ -20,5 +20,6 @@ fi
 # Custom
 service vsftpd start
 /usr/bin/tightvncserver -depth 16 -geometry 1024x768 :1
+service smbd restart
 
 exit 0
