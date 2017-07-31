@@ -86,7 +86,7 @@ function installFtp(){
     version=`which vsftpd`
     if [ "X${version}" == "X" ];then
         apt-get install vsftpd
-        cp /home/pi/initConfig/vsftpd.conf /etc/
+        cp ./initConfig/vsftpd.conf /etc/
         service vsftpd start
     fi
 }
@@ -168,7 +168,7 @@ function all(){
     updateBash
     updateSource
     installVnc
-    installftp
+    installFtp
     installSamba
     installNode
     mountDisk
@@ -186,7 +186,7 @@ do
       b) updateBash;;
       s) updateSource;;
       v) installVnc;;
-      f) installftp;;
+      f) installFtp;;
       s) installSamba;;
       n) installNode;;
       m) mountDisk;;
