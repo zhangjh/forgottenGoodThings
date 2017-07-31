@@ -96,7 +96,7 @@ function installSamba(){
     version=`which samba`
     if [ "X${version}" == "X" ];then
         apt-get install samba
-        cp /home/pi/initConfig/smb.conf /etc/samba
+        cp ./initConfig/smb.conf /etc/samba
     fi
 }
 
@@ -126,12 +126,12 @@ function mountDisk(){
 
 function setVimrc(){
     #6. 设置vimrc
-    cp /home/pi/initConfig/vimrc.local /etc/vim/
+    cp ./initConfig/vimrc.local /etc/vim/
 }
 
 function updateStartup(){
     #7. 设置开机启动
-    cp /home/pi/initConfig/rc.local /etc/
+    cp ./initConfig/rc.local /etc/
 }
 
 function setAlias(){
@@ -144,7 +144,7 @@ function setAlias(){
 function installNode(){
     #10. 安装node
     if [ ! -e /home/pi/node ];then
-        tar -xvf /home/pi/initConfig/node.tgz -C /home/pi/
+        tar -xvf ./initConfig/node.tgz -C /home/pi/
         if [ -e /usr/bin/node ];then
             cp /usr/bin/node /usr/bin/node.bak
         fi
@@ -160,8 +160,8 @@ function installNode(){
 }
 
 #11. 设置无线
-#cp /home/pi/initConfig/wpa.conf /etc
-#cp /home/pi/initConfig/interfaces /etc/network/
+#cp ./initConfig/wpa.conf /etc
+#cp ./initConfig/interfaces /etc/network/
 
 function all(){
     checkSu
@@ -187,7 +187,7 @@ do
       s) updateSource;;
       v) installVnc;;
       f) installFtp;;
-      s) installSamba;;
+      S) installSamba;;
       n) installNode;;
       m) mountDisk;;
       r) setVimrc;;
