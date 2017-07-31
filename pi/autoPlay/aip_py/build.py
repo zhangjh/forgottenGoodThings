@@ -4,9 +4,9 @@
 from sys import argv
 from aip import AipSpeech
 
-APP_ID="9950069"
-API_KEY="NbIFbltl3G1F6VfPqumH31eo"
-SECRET_KEY="15e814f7cc821087542fa9b5c476939a"
+APP_ID="xxx"
+API_KEY="xxx"
+SECRET_KEY="xxx"
 
 # audioText: The text will be synthesis to audio
 # audioPath: The audio will be saved as.
