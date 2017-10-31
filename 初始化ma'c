@@ -21,3 +21,5 @@ Action: Run Silent Coprocess
 
 Parameters: /usr/local/bin/iterm2-recv-zmodem.sh
 ```
+3. 配置iterm2
+http://macshuo.com/?p=676
