@@ -34,10 +34,6 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 set cindent
-
-"this line edit by janyong
-set expandtab
-
 if &term=="xterm"
     set t_Co=8
     set t_Sb=^[[4%dm
@@ -178,3 +174,10 @@ set t_vb=
 "不要备份文件
 set nobackup
 set nowb
+set noswapfile
+
+set paste
+
+"突出显示当前行
+set cursorline
+
