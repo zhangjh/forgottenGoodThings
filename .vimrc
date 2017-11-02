@@ -1,31 +1,34 @@
 runtime! debian.vim
-"ÉèÖÃ±àÂë
+"è®¾ç½®ç¼–ç 
 set encoding=utf-8
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 set fileencodings=utf-8,ucs-bom,chinese
  
-"ÓïÑÔÉèÖÃ
+"è¯­è¨€è®¾ç½®
 set langmenu=zh_CN.UTF-8
  
-"ÉèÖÃÓï·¨¸ßÁÁ
+"è®¾ç½®è¯­æ³•é«˜äº®
 syntax enable
 syntax on
+
+"è®¾ç½®vimæœç´¢é«˜äº®
+set hlsearch
  
-"ÉèÖÃÅäÉ«·½°¸
+"è®¾ç½®é…è‰²æ–¹æ¡ˆ
 colorscheme torte
  
-"¿ÉÒÔÔÚbufferµÄÈÎºÎµØ·½Ê¹ÓÃÊó±ê
+"å¯ä»¥åœ¨bufferçš„ä»»ä½•åœ°æ–¹ä½¿ç”¨é¼ æ ‡
 set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
  
-"¸ßÁÁÏÔÊ¾Æ¥ÅäµÄÀ¨ºÅ
+"é«˜äº®æ˜¾ç¤ºåŒ¹é…çš„æ‹¬å·
 set showmatch
  
-"È¥µôviÒ»ÖÂĞÔ
+"å»æ‰viä¸€è‡´æ€§
 set nocompatible
  
-"ÉèÖÃËõ½ø
+"è®¾ç½®ç¼©è¿›
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -41,41 +44,41 @@ if &term=="xterm"
     set t_Sf=^[[3%dm
 endif
  
-"´ò¿ªÎÄ¼şÀàĞÍ×Ô¶¯¼ì²â¹¦ÄÜ
+"æ‰“å¼€æ–‡ä»¶ç±»å‹è‡ªåŠ¨æ£€æµ‹åŠŸèƒ½
 filetype on
  
-"ÉèÖÃtaglist
-let Tlist_Show_One_File=0   "ÏÔÊ¾¶à¸öÎÄ¼şµÄtags
-let Tlist_File_Fold_Auto_Close=1 "·Çµ±Ç°ÎÄ¼ş£¬º¯ÊıÁĞ±íÕÛµşÒş²Ø
-let Tlist_Exit_OnlyWindow=1 "ÔÚtaglistÊÇ×îºóÒ»¸ö´°¿ÚÊ±ÍË³övim
-let Tlist_Use_SingleClick=1 "µ¥»÷Ê±Ìø×ª
-let Tlist_GainFocus_On_ToggleOpen=1 "´ò¿ªtaglistÊ±»ñµÃÊäÈë½¹µã
-let Tlist_Process_File_Always=1 "²»¹Ütaglist´°¿ÚÊÇ·ñ´ò¿ª£¬Ê¼ÖÕ½âÎöÎÄ¼şÖĞµÄtag
+"è®¾ç½®taglist
+let Tlist_Show_One_File=0   "æ˜¾ç¤ºå¤šä¸ªæ–‡ä»¶çš„tags
+let Tlist_File_Fold_Auto_Close=1 "éå½“å‰æ–‡ä»¶ï¼Œå‡½æ•°åˆ—è¡¨æŠ˜å éšè—
+let Tlist_Exit_OnlyWindow=1 "åœ¨taglistæ˜¯æœ€åä¸€ä¸ªçª—å£æ—¶é€€å‡ºvim
+let Tlist_Use_SingleClick=1 "å•å‡»æ—¶è·³è½¬
+let Tlist_GainFocus_On_ToggleOpen=1 "æ‰“å¼€taglistæ—¶è·å¾—è¾“å…¥ç„¦ç‚¹
+let Tlist_Process_File_Always=1 "ä¸ç®¡taglistçª—å£æ˜¯å¦æ‰“å¼€ï¼Œå§‹ç»ˆè§£ææ–‡ä»¶ä¸­çš„tag
  
-"ÉèÖÃWinManager²å¼ş
+"è®¾ç½®WinManageræ’ä»¶
 let g:winManagerWindowLayout='FileExplorer|TagList'
 nmap wm :WMToggle<cr>
-map <silent> <F9> :WMToggle<cr> "½«F9°ó¶¨ÖÁWinManager,¼´´ò¿ªWimManager
+map <silent> <F9> :WMToggle<cr> "å°†F9ç»‘å®šè‡³WinManager,å³æ‰“å¼€WimManager
  
-"ÉèÖÃCSCOPE
-set cscopequickfix=s-,c-,d-,i-,t-,e- "Éè¶¨ÊÇ·ñÊ¹ÓÃquickfix´°¿ÚÏÔÊ¾cscope½á¹û
+"è®¾ç½®CSCOPE
+set cscopequickfix=s-,c-,d-,i-,t-,e- "è®¾å®šæ˜¯å¦ä½¿ç”¨quickfixçª—å£æ˜¾ç¤ºcscopeç»“æœ
  
-"ÉèÖÃGrep²å¼ş
+"è®¾ç½®Grepæ’ä»¶
 nnoremap <silent> <F3> :Grep<CR>
  
-"ÉèÖÃÒ»¼ü±àÒë
+"è®¾ç½®ä¸€é”®ç¼–è¯‘
 map <F6> :make<CR>
  
-"ÉèÖÃ×Ô¶¯²¹È«
-filetype plugin indent on   "´ò¿ªÎÄ¼şÀàĞÍ¼ì²â
-set completeopt=longest,menu "¹ØµôÖÇÄÜ²¹È«Ê±µÄÔ¤ÀÀ´°¿Ú
+"è®¾ç½®è‡ªåŠ¨è¡¥å…¨
+filetype plugin indent on   "æ‰“å¼€æ–‡ä»¶ç±»å‹æ£€æµ‹
+set completeopt=longest,menu "å…³æ‰æ™ºèƒ½è¡¥å…¨æ—¶çš„é¢„è§ˆçª—å£
  
-"Æô¶¯vimÊ±Èç¹û´æÔÚtagsÔò×Ô¶¯¼ÓÔØ
+"å¯åŠ¨vimæ—¶å¦‚æœå­˜åœ¨tagsåˆ™è‡ªåŠ¨åŠ è½½
 if exists("tags")
     set tags=./tags
 endif
  
-"ÉèÖÃ°´F12¾Í¸üĞÂtagsµÄ·½·¨
+"è®¾ç½®æŒ‰F12å°±æ›´æ–°tagsçš„æ–¹æ³•
 map <F12> :call Do_CsTag()<CR>
 nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -147,31 +150,31 @@ function Do_CsTag()
         endif
 endfunction
  
-"ÉèÖÃÄ¬ÈÏshell
+"è®¾ç½®é»˜è®¤shell
 set shell=bash
  
-"ÉèÖÃVIM¼ÇÂ¼µÄÀúÊ·Êı
+"è®¾ç½®VIMè®°å½•çš„å†å²æ•°
 set history=400
  
-"ÉèÖÃµ±ÎÄ¼ş±»Íâ²¿¸Ä±äµÄÊ±ºî×Ô¶¯¶ÁÈëÎÄ¼ş
+"è®¾ç½®å½“æ–‡ä»¶è¢«å¤–éƒ¨æ”¹å˜çš„æ—¶ä¾¯è‡ªåŠ¨è¯»å…¥æ–‡ä»¶
 if exists("&autoread")
     set autoread
 endif
  
-"ÉèÖÃambiwidth
+"è®¾ç½®ambiwidth
 set ambiwidth=double
  
-"ÉèÖÃÎÄ¼şÀàĞÍ
+"è®¾ç½®æ–‡ä»¶ç±»å‹
 set ffs=unix,dos,mac
  
-"ÉèÖÃÔöÁ¿ËÑË÷Ä£Ê½
+"è®¾ç½®å¢é‡æœç´¢æ¨¡å¼
 set incsearch
  
-"ÉèÖÃ¾²ÒôÄ£Ê½
+"è®¾ç½®é™éŸ³æ¨¡å¼
 set noerrorbells
 set novisualbell
 set t_vb=
  
-"²»Òª±¸·İÎÄ¼ş
+"ä¸è¦å¤‡ä»½æ–‡ä»¶
 set nobackup
 set nowb
