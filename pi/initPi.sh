@@ -58,8 +58,8 @@ function updateSource(){
     cat /etc/apt/sources.list | grep -q "aliyun"
     if [ $? -ne 0 ];then
         cp /etc/apt/sources.list /etc/apt/sources.list.bak
-        echo "deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main contrib non-free" > /etc/apt/sources.list
-        echo "deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main contrib non-free" >> /etc/apt/sources.list
+        echo "deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free" > /etc/apt/sources.list
+        echo "deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free" >> /etc/apt/sources.list
         apt-get update
         apt-get upgrade
     fi
