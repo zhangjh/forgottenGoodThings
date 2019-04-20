@@ -11,6 +11,9 @@ set langmenu=zh_CN.UTF-8
 syntax enable
 syntax on
 
+"设置行号
+set nu
+
 "设置vim搜索高亮
 set hlsearch
  
@@ -150,7 +153,7 @@ endfunction
 set shell=bash
  
 "设置VIM记录的历史数
-set history=400
+set history=5000
  
 "设置当文件被外部改变的时侯自动读入文件
 if exists("&autoread")

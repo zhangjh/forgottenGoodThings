@@ -1,18 +1,18 @@
 # If you come from bash you might have to change your $PATH.
 JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
-M2_HOME=/Users/jihong.zjh/Software/apache-maven-3.5.2
-M2_REPO=/Users/jihong.zjh/.m2/repository
+M2_HOME=/Users/zhangjh/Software/apache-maven-3.5.2
+M2_REPO=/Users/zhangjh/.m2/repository
 export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jihong.zjh/.oh-my-zsh
+export ZSH=/Users/zhangjh/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="agnoster"
 #ZSH_THEME="pygmalion"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="myrobbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -90,7 +90,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cls="clear"
 alias bwh="ssh zhangjh@23.105.211.199 -p 28344"
-alias blog="ssh jihong.zjh@10.101.110.250"
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --cache=$HOME/.npm/.cache/cnpm \
 --disturl=https://npm.taobao.org/dist \
