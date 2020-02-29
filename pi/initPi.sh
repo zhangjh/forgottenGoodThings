@@ -177,8 +177,7 @@ function installNode(){
 }
 
 function installTransMission() {
-    apt-get install transmission transmission-daemon
-    cp ./initConfig/transmission.json /etc/transmission-daemon/setting.json
+    apt-get install transmission transmission-daemon && cp ./initConfig/settings.json /etc/transmission-daemon/settings.json
 }
 
 #11. 设置无线
