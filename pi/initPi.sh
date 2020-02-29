@@ -4,7 +4,7 @@
 
 function Usage(){
     echo "sudo sh -x $0"
-    echo " -pbsvfSnmriIaAh"
+    echo " -pbsvfSnmriIatAh"
     echo " -p update passwd"
     echo " -b modify sh alias from dash to bash"
     echo " -s modify apt sources"
@@ -17,6 +17,7 @@ function Usage(){
     echo " -i set auto startup"
     echo " -I install chinese input method"
     echo " -a set alias"
+    echo " -t install transmission"
     echo " -A same as bsvfSnmria"
     echo " -h print this help message"
     exit 1
@@ -58,8 +59,9 @@ function updateSource(){
     cat /etc/apt/sources.list | grep -q "aliyun"
     if [ $? -ne 0 ];then
         cp /etc/apt/sources.list /etc/apt/sources.list.bak
-        echo "deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free" > /etc/apt/sources.list
-        echo "deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free" >> /etc/apt/sources.list
+        version=`cat /etc/apt/sources.list | awk '{print $3}' | head -1`
+        echo "deb http://mirrors.aliyun.com/raspbian/raspbian/ ${version} main contrib non-free" > /etc/apt/sources.list
+        echo "deb-src http://mirrors.aliyun.com/raspbian/raspbian/ ${version} main contrib non-free" >> /etc/apt/sources.list
         apt-get update
         apt-get upgrade
     fi
@@ -128,6 +130,7 @@ function mountDisk(){
 
 function setVimrc(){
     #6. 设置vimrc
+    apt-get install vim
     cp ./initConfig/vimrc.local /etc/vim/
 }
 
@@ -145,20 +148,37 @@ function setAlias(){
 
 function installNode(){
     #10. 安装node
-    if [ ! -e /home/pi/node ];then
-        tar -xvf ./initConfig/node.tgz -C /home/pi/
-        if [ -e /usr/bin/node ];then
-            cp /usr/bin/node /usr/bin/node.bak
+    if [ ! -e ~/.zshrc ];then
+        apt-get install zsh
+        if [ $? -ne 0 ];then
+            exit 1;
         fi
-        if [ -e /usr/bin/node ];then
-            rm /usr/bin/node
-        fi
-        if [ -e /usr/bin/npm ];then
-            rm /usr/bin/npm
-        fi
-        ln -s /home/pi/node/bin/node /usr/bin/
-        ln -s /home/pi/node/lib/node_modules/npm/bin/npm-cli.js /usr/bin/npm
+        curl -Lo install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && sh install.sh
     fi
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    which node
+    if [ $? -ne 0 ];then
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+    fi
+    #if [ ! -e /home/pi/node ];then
+        #tar -xvf ./initConfig/node.tgz -C /home/pi/
+        #if [ -e /usr/bin/node ];then
+        #    cp /usr/bin/node /usr/bin/node.bak
+        #fi
+        #if [ -e /usr/bin/node ];then
+        #    rm /usr/bin/node
+        #fi
+        #if [ -e /usr/bin/npm ];then
+        #    rm /usr/bin/npm
+        #fi
+        #ln -s /home/pi/node/bin/node /usr/bin/
+        #ln -s /home/pi/node/lib/node_modules/npm/bin/npm-cli.js /usr/bin/npm
+    #fi
+}
+
+function installTransMission() {
+    apt-get install transmission transmission-daemon
+    cp ./initConfig/transmission.json /etc/transmission-daemon/setting.json
 }
 
 #11. 设置无线
@@ -181,7 +201,7 @@ function all(){
 }
 
 checkSu
-while getopts "pbsvfSnmriIaAh" opt 
+while getopts "pbsvfSnmriIatAh" opt 
 do
     case ${opt} in
       p) updatePasswd;;
@@ -196,6 +216,7 @@ do
       i) updateStartup;;
       I) installInputMethod;;
       a) setAlias;;
+      t) installTransMission;;
       A) all;;
       h) Usage;;
     esac
