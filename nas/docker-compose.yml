@@ -1,0 +1,39 @@
+version: "3"
+services:
+        mysql:
+                image: mysql:8.0
+                restart: always
+                environment:
+                        MYSQL_ROOT_PASSWORD: zhangjh
+                        MYSQL_DATABASE: nextcloud
+                        MYSQL_USER: nextcloud
+                        MYSQL_PASSWORD: zhangjh
+                ports:
+                        - 3306
+                volumes:
+                        - /app/nextcloud/mysql:/var/lib/mysql
+        onlyOffice:
+                image: onlyoffice/documentserver
+                restart: always
+                ports:
+                        - 9000:80
+                        - 9001:443
+                volumes:
+                        - /app/onlyoffice/logs:/var/log/onlyoffice
+                        - /app/onlyoffice/data:/var/www/onlyoffice/data
+        nextcloud:
+                build:
+                       context: .
+                       dockerfile: Dockerfile
+                depends_on:
+                        - mysql
+                        - onlyOffice
+                restart: always
+                ports:
+                        - 80:80
+                volumes:
+                        - /app/nextcloud/data:/var/www/html
+                        - /home/zhangjh:/home/zhangjh
+                links:
+                        - mysql
+                        - onlyOffice
