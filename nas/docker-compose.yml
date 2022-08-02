@@ -1,12 +1,10 @@
 version: "3"
 services:
+        pre:
+                build:
+                        context: .
+                        dockerfile: PreDockerfile
         mysql:
-                command: 
-                        - bash
-                        - c
-                        - |
-                          mkdir -vp /app/nextcloud/{mysql,data} /app/onlyoffice/{logs,data} 
-                          tar -xvf onlyoffice.tar.gz -C /app/nextcloud/data/apps
                 image: mysql:8.0
                 restart: always
                 environment:
@@ -28,9 +26,7 @@ services:
                         - /app/onlyoffice/logs:/var/log/onlyoffice
                         - /app/onlyoffice/data:/var/www/onlyoffice/data
         nextcloud:
-                build:
-                       context: .
-                       dockerfile: Dockerfile
+                image: nextcloud:latest
                 depends_on:
                         - mysql
                         - onlyOffice
