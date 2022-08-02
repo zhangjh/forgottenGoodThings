@@ -1,0 +1,69 @@
+/**
+ *
+ * (c) Copyright Ascensio System SIA 2022
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+ #content .section-onlyoffice .icon-info {
+    box-sizing: content-box;
+    padding-top: 6px;
+}
+.onlyoffice-header {
+    display: inline-block;
+    margin-top: 16px;
+}
+.section-onlyoffice input {
+    display: block;
+    width: 250px;
+}
+.onlyoffice-hide {
+    display: none;
+}
+#onlyofficeAdv {
+    cursor: pointer;
+    text-decoration: none;
+}
+#onlyofficeAdv .icon {
+    display: inline-block;
+    margin-bottom: -3px;
+}
+#onlyofficeAddrSave {
+    float: left;
+}
+.onlyoffice-demo {
+    margin-left: 90px;
+}
+#s2id_onlyofficeLimitGroups,
+#s2id_onlyofficeWatermark_allGroupsList,
+#s2id_onlyofficeWatermark_allTagsList,
+#s2id_onlyofficeWatermark_linkTagsList {
+    margin-bottom: 16px;
+    margin-left: 18px;
+    margin-top: 6px;
+    width: 250px;
+}
+.onlyoffice-exts {
+    column-width: 100px;
+    -moz-column-width: 100px;
+    -webkit-column-width: 100px;
+}
+.onlyoffice-tables {
+    column-width: 140px;
+    -moz-column-width: 140px;
+    -webkit-column-width: 140px;
+}
+#onlyofficeSecret-show {
+    left: 240px;
+}
