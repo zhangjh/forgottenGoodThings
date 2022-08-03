@@ -1,13 +1,15 @@
-FROM ubuntu
-WORKDIR /root/forgottenGoodThings/nas
-RUN apt-get update
-#RUN apt-get install tar
-RUN mkdir -vp  /app/nextcloud/{mysql,data} /app/onlyoffice/{logs,data}
-COPY onlyoffice /app/nextcloud/data/apps
-#RUN tar -xvf /root/forgottenGoodThings/nas/onlyoffice.tar.gz -C /app/nextcloud/data/apps
+FROM nextcloud:latest
+
+WORKDIR ./
+
+#COPY onlyoffice /app/nextcloud/data/apps
 
 RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list
 RUN cat /etc/apt/sources.list
 RUN rm -Rf /var/lib/apt/lists/*
+RUN apt-get update
 RUN apt-get -y install smbclient libsmbclient-dev && pecl install smbclient && docker-php-ext-enable smbclient
 RUN apt-get -y install libmagickcore-6.q16-6-extra
+
+VOLUME /home/zhangjh:/home/zhangjh
+RUN chown -R www-data:www-data /home/zhangjh

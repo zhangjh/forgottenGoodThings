@@ -1,9 +1,5 @@
 version: "3"
 services:
-        pre:
-                build:
-                        context: .
-                        dockerfile: PreDockerfile
         mysql:
                 image: mysql:8.0
                 restart: always
@@ -13,7 +9,7 @@ services:
                         MYSQL_USER: nextcloud
                         MYSQL_PASSWORD: zhangjh
                 ports:
-                        - 3306
+                        - 3306:3306
                 volumes:
                         - /app/nextcloud/mysql:/var/lib/mysql
         onlyOffice:
@@ -21,12 +17,13 @@ services:
                 restart: always
                 ports:
                         - 9000:80
-                        - 9001:443
                 volumes:
                         - /app/onlyoffice/logs:/var/log/onlyoffice
                         - /app/onlyoffice/data:/var/www/onlyoffice/data
         nextcloud:
-                image: nextcloud:latest
+                build:
+                        context: .
+                        dockerfile: Dockerfile
                 depends_on:
                         - mysql
                         - onlyOffice
