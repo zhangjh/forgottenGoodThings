@@ -1,4 +1,4 @@
-FROM nextcloud:latest
+FROM nextcloud:23.0
 
 WORKDIR ./
 
