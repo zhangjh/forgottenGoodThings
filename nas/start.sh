@@ -22,4 +22,5 @@ while [ true ];do
 	fi
 done
 
-
+## 重启时同步挂载盘
+docker exec --user www-data nas_nextcloud_1 php occ files:scan --all
