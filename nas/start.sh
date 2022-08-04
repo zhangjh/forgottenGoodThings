@@ -4,6 +4,7 @@ mkdir -vp /app/nextcloud/data
 mkdir -vp /app/onlyoffice/logs
 mkdir -vp /app/onlyoffice/data
 
+chown -R www-data:www-data /home/zhangjh
 docker-compose up -d
 
 while [ true ];do

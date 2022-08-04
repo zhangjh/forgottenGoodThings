@@ -30,7 +30,7 @@ services:
                 restart: always
                 ports:
                         - 80:80
-                privileged: true
+                          #privileged: true
                 volumes:
                         - /app/nextcloud/data:/var/www/html
                         - /home/zhangjh:/home/zhangjh                          
