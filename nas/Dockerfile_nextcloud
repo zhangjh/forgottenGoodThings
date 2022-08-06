@@ -1,4 +1,4 @@
-FROM nextcloud:23.0
+FROM --platform=linux/arm/v7 nextcloud
 
 WORKDIR ./
 
