@@ -11,6 +11,7 @@ function Usage(){
     echo " -v install vnc"
     echo " -f install ftp"
     echo " -S install samba"
+    echo " -q install shadowsocks client"
     echo " -n install node"
     echo " -m mount usb disk"
     echo " -r set vimrc"
@@ -104,6 +105,15 @@ function installSamba(){
     fi
 }
 
+function installSs() {
+    version=`which sslocal`
+    if [ "X${version}" == "X" ];then
+        apt install shadowsocks-libev
+        cp ./initConfig/shadowSocks.json /etc/
+        ss-local -c /etc/shadowsocks.json
+    fi
+}
+
 function mountDisk(){
     #5. 挂载硬盘
     disk=`fdisk -l | grep "/dev/sda[0-9]" | awk '{print $1}'`
@@ -191,6 +201,7 @@ function all(){
     installVnc
     installFtp
     installSamba
+    installSs
     installNode
     mountDisk
     setVimrc
@@ -200,7 +211,7 @@ function all(){
 }
 
 checkSu
-while getopts "pbsvfSnmriIatAh" opt 
+while getopts "pbsvfSqnmriIatAh" opt 
 do
     case ${opt} in
       p) updatePasswd;;
@@ -209,6 +220,7 @@ do
       v) installVnc;;
       f) installFtp;;
       S) installSamba;;
+      q) installSs;;
       n) installNode;;
       m) mountDisk;;
       r) setVimrc;;
