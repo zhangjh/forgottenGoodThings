@@ -108,9 +108,11 @@ function installSamba(){
 function installSs() {
     version=`which sslocal`
     if [ "X${version}" == "X" ];then
-        apt install shadowsocks-libev
-        cp ./initConfig/shadowSocks.json /etc/
-        ss-local -c /etc/shadowsocks.json
+        curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
+        sh -x install-release.sh
+        mkdir -p /etc/v2ray
+        cp ./initConfig/v2ray.config.json /etc/v2ray/config.json
+        v2ray --config=/etc/v2ray/config.json
     fi
 }
 

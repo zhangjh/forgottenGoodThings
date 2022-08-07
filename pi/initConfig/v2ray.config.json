@@ -1,0 +1,116 @@
+{
+  "log": {
+    "error": "",
+    "loglevel": "info",
+    "access": ""
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "settings": {
+        "udp": false,
+        "auth": "noauth"
+      },
+      "port": "1080"
+    },
+    {
+      "listen": "127.0.0.1",
+      "protocol": "http",
+      "settings": {
+        "timeout": 360
+      },
+      "port": "1087"
+    }
+  ],
+  "outbounds": [
+    {
+      "mux": {
+        "enabled": false,
+        "concurrency": 8
+      },
+      "protocol": "vmess",
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "",
+          "headers": {
+            "host": ""
+          }
+        },
+        "security": "none"
+      },
+      "tag": "proxy",
+      "settings": {
+        "vnext": [
+          {
+            "address": "xxxxxx",
+            "users": [
+              {
+                "id": "5db86f27-5166-4543-b728-b7a07470815c",
+                "alterId": 0,
+                "level": 0,
+                "security": "aes-128-gcm"
+              }
+            ],
+            "port": 12345
+          }
+        ]
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP",
+        "userLevel": 0
+      }
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "none"
+        }
+      }
+    }
+  ],
+  "dns": {},
+  "routing": {
+    "settings": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "outboundTag": "proxy",
+          "domain": [
+            "apps.apple.com",
+            "*.github.com",
+            "*.githubusercontent.com",
+            "*.githubassets.com",
+            "youdao.com",
+            "google.com"
+          ]
+        },
+        {
+          "type": "field",
+          "outboundTag": "direct",
+          "domain": [
+            "localhost",
+            "geosite:cn"
+          ]
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:private",
+            "geoip:cn"
+          ],
+          "outboundTag": "direct"
+        }
+      ]
+    }
+  },
+  "transport": {}
+}
