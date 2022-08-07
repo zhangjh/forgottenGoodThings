@@ -110,9 +110,8 @@ function installSs() {
     if [ "X${version}" == "X" ];then
         curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
         sh -x install-release.sh
-        mkdir -p /etc/v2ray
-        cp ./initConfig/v2ray.config.json /etc/v2ray/config.json
-        v2ray --config=/etc/v2ray/config.json
+        cp ./initConfig/v2ray.config.json /usr/local/etc/v2ray/
+        systemctl start v2ray
     fi
 }
 
