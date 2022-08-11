@@ -1,0 +1,7 @@
+FROM ubuntu
+RUN apt-get update && apt-get -y install vim && apt-get -y install zsh
+RUN apt-get -y install tightvncserver && mkdir -p ~/.vnc && \
+ echo zhangjh | vncpasswd -f > ~/.vnc/passwd && chmod 0600 ~/.vnc/passwd && \
+ USER=root tightvncserver -geometry 1024x768 :1
+RUN mkdir -p /mnt/share && \
+    apt-get -y install ntfs-3g #&& mount /dev/sda1 /mnt/share
