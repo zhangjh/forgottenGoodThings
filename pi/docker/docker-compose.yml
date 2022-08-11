@@ -54,3 +54,19 @@ services:
       - /mnt/share:/mnt/share
     links:
       - mysql
+
+#  retroPie: 
+#    image: lasery/retropie
+#    environment:
+#      PULSE_SERVER: unix:/run/user/1000/pulse/native
+#    privileged: true
+#    command: groupadd video
+#    volumes:
+#      - /opt/vc:/opt/vc
+#      - /var/run/dbus/:/var/run/dbus/
+#      - /dev/snd:/dev/snd
+#      - /dev/input:/dev/input
+#      - /dev/vchiq:/dev/vchiq
+#      - /dev/vcio:/dev/vcio
+#      - /dev/fb0:/dev/fb0
+#      - /dev/vcsm:/dev/vcsm
