@@ -29,13 +29,13 @@ services:
     restart: unless-stopped
 
   mysql:
-    image: webhippie/mariadb
+    image: ibex/debian-mysql-server-5.7
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: zhangjh
-      MARIADB_DATABASE: nextcloud
-      MARIADB_USERNAME: nextcloud
-      MARIADB_PASSWORD: zhangjh
+      MYSQL_ROOT_PASSWORD: zhangjh
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: zhangjh
     ports:
       - 3306:3306
     volumes:
