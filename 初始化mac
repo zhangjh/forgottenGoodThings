@@ -1,0 +1,25 @@
+1. 安装brew
+2. 给终端安装lrzsz，以便可以通过rz，sz上传下载文件
+```
+brew install lrzsz
+brew install wget
+wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-recv-zmodem.sh /usr/local/bin
+wget https://raw.github.com/mmastrac/iterm2-zmodem/master/iterm2-send-zmodem.sh /usr/local/bin
+chmod 777 *.sh
+```
+设置iterm2的triggers
+```
+Regular expression: \*\*B0100
+
+Action: Run Silent Coprocess
+
+Parameters: /usr/local/bin/iterm2-send-zmodem.sh
+
+Regular expression: \*\*B00000000000000
+
+Action: Run Silent Coprocess
+
+Parameters: /usr/local/bin/iterm2-recv-zmodem.sh
+```
+3. 配置iterm2
+http://macshuo.com/?p=676
