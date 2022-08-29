@@ -105,12 +105,12 @@ function installSamba(){
     fi
 }
 
-function installSs() {
+function installV2ray() {
     version=`which sslocal`
     if [ "X${version}" == "X" ];then
+        cp ./initConfig/v2ray.config.json /usr/local/etc/v2ray/config.json
         curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
         sh -x install-release.sh
-        cp ./initConfig/v2ray.config.json /usr/local/etc/v2ray/
         systemctl start v2ray
     fi
 }
@@ -202,7 +202,7 @@ function all(){
     installVnc
     installFtp
     installSamba
-    installSs
+    installV2ray
     installNode
     mountDisk
     setVimrc
@@ -221,7 +221,7 @@ do
       v) installVnc;;
       f) installFtp;;
       S) installSamba;;
-      q) installSs;;
+      q) installV2ray;;
       n) installNode;;
       m) mountDisk;;
       r) setVimrc;;
