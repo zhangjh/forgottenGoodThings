@@ -53,6 +53,15 @@ function updateBash(){
       rm /bin/sh
       ln -s /bin/bash /bin/sh
     fi
+    #0.2 安装zsh
+    if [ ! -e ~/.zshrc ];then
+        apt-get install zsh
+        if [ $? -ne 0 ];then
+            exit 1;
+        fi
+        curl -Lo install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && sh install.sh
+    fi
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 function updateSource(){
@@ -159,14 +168,6 @@ function setAlias(){
 
 function installNode(){
     #10. 安装node
-    if [ ! -e ~/.zshrc ];then
-        apt-get install zsh
-        if [ $? -ne 0 ];then
-            exit 1;
-        fi
-        curl -Lo install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && sh install.sh
-    fi
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     which node
     if [ $? -ne 0 ];then
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
