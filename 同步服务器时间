@@ -1,0 +1,2 @@
+apt install ntpdate
+ntpdate pool.ntp.org
