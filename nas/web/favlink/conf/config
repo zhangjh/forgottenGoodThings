@@ -1,0 +1,25 @@
+let config = {
+    secret: "weird sheep",
+    mailPass: "qazxsw11111",
+    dbIp: "localhost",
+    dbIpTest: "localhost",
+    dbPort: "20172",
+    dbPortTest: "20172",
+    dbName: "favlinks",
+    dbNameTest: "favlinks_test",
+    dbDebug: false,
+    appLogin: {
+        github: {
+            clientId: "Iv1.8d48be128f9a0118",
+            clientSecret: "32a7de005db04e741c261417ebdf2ec7e4892d9a",
+        },
+        weibo: {
+            clientId: "1326506754",
+            clientSecret: "d61ef95b13c7c99029a66572ea9e91e7",
+            redirect_uri: "https://favlink.cn/oauth/wbRedirect"
+        }
+    },
+
+};
+
+module.exports = config;

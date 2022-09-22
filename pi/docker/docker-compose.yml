@@ -4,13 +4,13 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile_base
-  smb:
-    image: dperson/samba
-    ports:
-      - 139:139
-      - 445:445
-    volumes:
-      - /mnt/share:/mnt/share
+        #smb:
+        #image: dperson/samba
+        #ports:
+        #- 139:139
+        #- 445:445
+        #volumes:
+        #- /mnt/nas:/mnt/nas
   qbit:
     image: linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -21,7 +21,7 @@ services:
       - WEBUI_PORT=8088
     volumes:
       - /home/pi/qb/appdata/config:/config
-      - /mnt/share/下载:/downloads
+      - /mnt/nas/下载:/downloads
     ports:
       - 8088:8088
       - 6881:6881
@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
   mysql:
-    image: ibex/debian-mysql-server-5.7
+    image: mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: zhangjh
@@ -51,7 +51,7 @@ services:
       - 8081:80
     volumes:
       - /app/nextcloud/data:/var/www/html
-      - /mnt/share:/mnt/share
+      - /mnt/nas:/mnt/nas
     links:
       - mysql
 
