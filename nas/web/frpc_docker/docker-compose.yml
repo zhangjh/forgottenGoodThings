@@ -1,0 +1,30 @@
+version: "3"
+services:
+    frpc_nas:
+        image: snowdreamtech/frpc
+        restart: always
+        network_mode: host
+        container_name: frpc_nas
+        volumes:
+             - ./frpc_nas.ini:/etc/frp/frpc.ini
+    frpc_qt:
+        image: snowdreamtech/frpc
+        restart: always
+        network_mode: host
+        container_name: frpc_qt
+        volumes:
+             - ./frpc_qt.ini:/etc/frp/frpc.ini
+    frpc_favlink:
+        image: snowdreamtech/frpc
+        restart: always
+        network_mode: host
+        container_name: frpc_favlink
+        volumes:
+             - ./frpc_favlink.ini:/etc/frp/frpc.ini
+    frpc_comment:
+        image: snowdreamtech/frpc
+        restart: always
+        network_mode: host
+        container_name: frpc_comment
+        volumes:
+             - ./frpc_comment.ini:/etc/frp/frpc.ini

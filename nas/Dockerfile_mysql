@@ -1,2 +1,0 @@
-FROM --platform=linux/arm webhippie/mariadb
-
