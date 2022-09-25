@@ -1,0 +1,38 @@
+version: "3"
+services:
+    bore_nas:
+        image: ekzhang/bore
+        restart: always
+        network_mode: host
+        container_name: bore_nas
+        command: local -p 8081 -t zhangjh.me 8081
+    bore_ssh:
+        image: ekzhang/bore
+        restart: always
+        network_mode: host
+        container_name: bore_ssh
+        command: local -p 6000 -t zhangjh.me 22
+    bore_qt:
+        image: ekzhang/bore
+        restart: always
+        network_mode: host
+        container_name: bore_qt
+        command: local -p 8088 -t zhangjh.me 8088
+    bore_favlink:
+        image: ekzhang/bore
+        restart: always
+        network_mode: host
+        container_name: bore_favlink
+        command: local -p 3000 -t zhangjh.me 3000
+    bore_comment:
+        image: ekzhang/bore
+        restart: always
+        network_mode: host
+        container_name: bore_comment
+        command: local -p 3001 -t zhangjh.me 3001
+    bore_blog:
+        image: ekzhang/bore
+        restart: always
+        network_mode: host
+        container_name: bore_blog
+        command: local -p 4000 -t zhangjh.me 4000

@@ -1,0 +1,8 @@
+version: "3"
+services:
+    bore_server:
+        image: ekzhang/bore
+        restart: always
+        network_mode: host
+        container_name: bore_server
+        command: server

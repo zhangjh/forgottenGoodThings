@@ -1,52 +1,42 @@
+### 自动部署MongoDB、favlinks、comment、blog的docker-compose文件
+### 其中各应用的镜像已推送docker hub，如有变动会在每次push时自动由action生成新的镜像推送
 version: "3"
 services:
-      #mongo:
-      #build: 
-      #context: .
-      #dockerfile: Dockerfile_mongo
-      #environment:
-      #  MONGO_INITDB_ROOT_USERNAME: root
-      #  MONGO_INITDB_ROOT_PASSWORD: zhangjh
-  frpc:
-    image: snowdreamtech/frpc
-    container_name: frpc
+  mongo:
+    image: mongo:4.2.22
+    container_name: mongo
     network_mode: host
     restart: always
+    environment:
+    - TZ=Asia/Shanghai
     volumes:
-      - ./frpc/frpc_favlink.ini:/etc/frp/frpc_favlink.ini
-      - ./frpc/frpc_comment.ini:/etc/frp/frpc_comment.ini
-      - ./frpc/frpc_nas.ini:/etc/frp/frpc_nas.ini
-      - ./frpc/frpc_qt.ini:/etc/frp/frpc_qt.ini
+      - /mnt/nas/dev/mongodb/data:/mongo/data
+      - /mnt/nas/dev/mongodb/log:/mongo/log
+    command:
+      - bash
+      - -c
+      - mongod --port 20172 --bind_ip_all --dbpath /mongo/data --logpath /mongo/log/mongo.log
+
   comment:
     container_name: comment
-    network_mode: host
-    build: 
-      context: ./comment
-      dockerfile: ./Dockerfile
+    image: njhxzhangjh/comment
     restart: always
+    network_mode: host
+    depends_on:
+      - mongo
+
   favlink:
-    container_name: favlink
-    network_mode: host
-    build: 
-      context: ./favlink
-      dockerfile: ./Dockerfile
+    container_name: favlinks
+    image: njhxzhangjh/favlinks
     restart: always
-      #blog:
-      #container_name: blog
-      #network_mode: host
-      #build: ./blog
-      #restart: always
-      #ports: 
-      #- 3000:3000
-      #- 3001:3001
-      #- 4000:4000
-        #depends_on: mongo
-      #favlink:
-      #build:
-      #context: .
-      #dockerfile: Dockerfile_favlink
-      #restart: always
-      #ports:
-      #- 3000:3000
-      #depends_on:
-      #- mongo
+    network_mode: host
+    depends_on:
+      - mongo
+
+  blog:
+    container_name: blog
+    image: njhxzhangjh/blog
+    restart: always
+    network_mode: host
+    depends_on:
+      - comment
