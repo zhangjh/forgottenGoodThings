@@ -22,6 +22,10 @@ services:
     image: njhxzhangjh/comment
     restart: always
     network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
     depends_on:
       - mongo
 
@@ -30,6 +34,10 @@ services:
     image: njhxzhangjh/favlinks
     restart: always
     network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
     depends_on:
       - mongo
 
@@ -38,5 +46,9 @@ services:
     image: njhxzhangjh/blog
     restart: always
     network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m" 
     depends_on:
       - comment
