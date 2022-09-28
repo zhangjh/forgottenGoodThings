@@ -1,0 +1,38 @@
+version: "3"
+services:
+    frps_nas:
+        image: snowdreamtech/frps
+        restart: always
+        network_mode: host
+        container_name: frps_nas
+        volumes:
+            - ./frps_nas.ini:/etc/frp/frps.ini
+    frps_qt:
+        image: snowdreamtech/frps
+        restart: always
+        network_mode: host
+        container_name: frps_qt
+        volumes:
+            - ./frps_qt.ini:/etc/frp/frps.ini
+    frps_favlink:
+        image: snowdreamtech/frps
+        restart: always
+        network_mode: host
+        container_name: frps_favlink
+        volumes:
+            - ./frps_favlink.ini:/etc/frp/frps.ini
+    frps_comment:
+        image: snowdreamtech/frps
+        restart: always
+        network_mode: host
+        container_name: frps_comment
+        volumes:
+            - ./frps_comment.ini:/etc/frp/frps.ini
+    frps_blog:
+        image: snowdreamtech/frps
+        restart: always
+        network_mode: host
+        container_name: frps_blog
+        volumes:
+            - ./frps_blog.ini:/etc/frp/frps.ini
+
