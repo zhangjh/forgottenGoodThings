@@ -23,6 +23,7 @@ services:
 
   mysql:
     image: mysql
+    container_name: mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: zhangjh
@@ -36,6 +37,7 @@ services:
   
   onlyoffice:
     image: onlyoffice/documentserver
+    container_name: onlyoffice
     restart: always
     ports:
       - 9001:80
@@ -43,11 +45,14 @@ services:
     volumes:
       - /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice
       - /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data
+    environment:
+      - JWT_ENABLED=false
 
   nextcloud:
     build:
       context: .
       dockerfile: Dockerfile_nextcloud
+    container_name: nextcloud
     restart: always
     ports:
       - 8081:80
