@@ -35,4 +35,11 @@ services:
         container_name: frps_blog
         volumes:
             - ./frps_blog.ini:/etc/frp/frps.ini
+    frps_office:
+        image: snowdreamtech/frps
+        restart: always
+        network_mode: host
+        container_name: frps_office
+        volumes:
+            - ./frps_office.ini:/etc/frp/frps.ini
 
