@@ -35,3 +35,10 @@ services:
         container_name: frpc_blog
         volumes:
              - ./frpc_blog.ini:/etc/frp/frpc.ini
+    frpc_office:
+        image: snowdreamtech/frpc
+        restart: always
+        network_mode: host
+        container_name: frpc_office
+        volumes:
+             - ./frpc_office.ini:/etc/frp/frpc.ini
