@@ -5,34 +5,62 @@ services:
         restart: always
         network_mode: host
         container_name: bore_nas
+        logging:
+          driver: "json-file"
+          options:
+            max-size: "200m"
         command: local -p 8081 -t zhangjh.me 8081
     bore_ssh:
         image: ekzhang/bore
         restart: always
         network_mode: host
         container_name: bore_ssh
+        logging:
+          driver: "json-file"
+          options:
+            max-size: "200m"
         command: local -p 6000 -t zhangjh.me 22
     bore_qt:
         image: ekzhang/bore
         restart: always
         network_mode: host
         container_name: bore_qt
+        logging:
+          driver: "json-file"
+          options:
+            max-size: "200m"
+       
         command: local -p 8088 -t zhangjh.me 8088
     bore_favlink:
         image: ekzhang/bore
         restart: always
         network_mode: host
         container_name: bore_favlink
+        logging:
+          driver: "json-file"
+          options:
+            max-size: "200m"
+       
         command: local -p 3000 -t zhangjh.me 3000
     bore_comment:
         image: ekzhang/bore
         restart: always
         network_mode: host
         container_name: bore_comment
+        logging:
+          driver: "json-file"
+          options:
+            max-size: "200m"
+       
         command: local -p 3001 -t zhangjh.me 3001
     bore_blog:
         image: ekzhang/bore
         restart: always
         network_mode: host
         container_name: bore_blog
+        logging:
+          driver: "json-file"
+          options:
+            max-size: "200m"
+       
         command: local -p 4000 -t zhangjh.me 4000
