@@ -1,0 +1,17 @@
+version: "3"
+services:
+  nginx:
+    image: nginx
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./logs/:/var/log/nginx
+      - ./favlink.cn.key:/etc/nginx/cert/favlink.cn.key:ro
+      - ./favlink.cn.pem:/etc/nginx/cert/favlink.cn.pem:ro
+      - ./zhangjh.me.key:/etc/nginx/cert/zhangjh.me.key:ro
+      - ./zhangjh.me.pem:/etc/nginx/cert/zhangjh.me.pem:ro
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 443:8888
+      - 80:8888
