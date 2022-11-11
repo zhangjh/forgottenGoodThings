@@ -52,3 +52,13 @@ services:
         max-size: "200m" 
     depends_on:
       - comment
+      
+  translation:
+    container_name: translation
+    image: njhxzhangjh/translation
+    restart: always
+    network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m" 
