@@ -29,7 +29,7 @@ services:
     depends_on:
       - mongo
 
-  favlink:
+  favlinks:
     container_name: favlinks
     image: njhxzhangjh/favlinks
     restart: always
@@ -40,6 +40,12 @@ services:
         max-size: "200m"
     depends_on:
       - mongo
+    volumes:
+      - ./favlinks/conf:/favlinks/conf
+        #command:
+        #- bash 
+        #- -c
+        #- ls /favlinks/views
 
   blog:
     container_name: blog
