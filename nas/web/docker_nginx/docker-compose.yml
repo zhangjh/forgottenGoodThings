@@ -10,7 +10,10 @@ services:
       - ./favlink.cn.pem:/etc/nginx/cert/favlink.cn.pem:ro
       - ./zhangjh.me.key:/etc/nginx/cert/zhangjh.me.key:ro
       - ./zhangjh.me.pem:/etc/nginx/cert/zhangjh.me.pem:ro
+      - ./translate.favlink.cn.key:/etc/nginx/cert/translate.favlink.cn.key:ro
+      - ./translate.favlink.cn.pem:/etc/nginx/cert/translate.favlink.cn.pem:ro
     environment:
       TZ: Asia/Shanghai
     ports:
-      - 443:8888
+      - 80:80
+      - 443:443
