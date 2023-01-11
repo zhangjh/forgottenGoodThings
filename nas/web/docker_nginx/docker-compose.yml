@@ -14,4 +14,3 @@ services:
       TZ: Asia/Shanghai
     ports:
       - 443:8888
-      - 80:8888
