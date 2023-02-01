@@ -42,3 +42,17 @@ services:
         container_name: frpc_office
         volumes:
              - ./frpc_office.ini:/etc/frp/frpc.ini
+    frpc_py:
+        image: snowdreamtech/frpc
+        restart: always
+        network_mode: host
+        container_name: frpc_py
+        volumes:
+             - ./frpc_py.ini:/etc/frp/frpc.ini
+    frpc_wx:
+        image: snowdreamtech/frpc
+        restart: always
+        network_mode: host
+        container_name: frpc_wx
+        volumes:
+             - ./frpc_wx.ini:/etc/frp/frpc.ini
