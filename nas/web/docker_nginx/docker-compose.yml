@@ -5,6 +5,8 @@ services:
     restart: always
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./v2ray/v2ray.conf:/etc/nginx/v2ray.conf:ro
+      - ./v2ray/data:/data
       - ./logs/:/var/log/nginx
       - ./favlink.cn.key:/etc/nginx/cert/favlink.cn.key:ro
       - ./favlink.cn.pem:/etc/nginx/cert/favlink.cn.pem:ro
