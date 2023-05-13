@@ -49,10 +49,10 @@ services:
         container_name: frpc_py
         volumes:
              - ./frpc_py.ini:/etc/frp/frpc.ini
-    frpc_wx:
+    frpc_web:
         image: snowdreamtech/frpc
         restart: always
         network_mode: host
-        container_name: frpc_wx
+        container_name: frpc_web
         volumes:
-             - ./frpc_wx.ini:/etc/frp/frpc.ini
+             - ./frpc_web.ini:/etc/frp/frpc.ini
