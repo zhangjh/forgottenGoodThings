@@ -7,13 +7,6 @@ services:
         container_name: frpc_nas
         volumes:
              - ./frpc_nas.ini:/etc/frp/frpc.ini
-    frpc_qt:
-        image: snowdreamtech/frpc
-        restart: always
-        network_mode: host
-        container_name: frpc_qt
-        volumes:
-             - ./frpc_qt.ini:/etc/frp/frpc.ini
     frpc_favlink:
         image: snowdreamtech/frpc
         restart: always
@@ -25,9 +18,9 @@ services:
         image: snowdreamtech/frpc
         restart: always
         network_mode: host
-        container_name: frpc_comment
+        container_name: frpc_web
         volumes:
-             - ./frpc_comment.ini:/etc/frp/frpc.ini
+             - ./frpc_web.ini:/etc/frp/frpc.ini
     frpc_blog:
         image: snowdreamtech/frpc
         restart: always
@@ -35,24 +28,10 @@ services:
         container_name: frpc_blog
         volumes:
              - ./frpc_blog.ini:/etc/frp/frpc.ini
-    frpc_office:
+    frpc_ssh:
         image: snowdreamtech/frpc
         restart: always
         network_mode: host
-        container_name: frpc_office
+        container_name: frpc_ssh
         volumes:
-             - ./frpc_office.ini:/etc/frp/frpc.ini
-    frpc_py:
-        image: snowdreamtech/frpc
-        restart: always
-        network_mode: host
-        container_name: frpc_py
-        volumes:
-             - ./frpc_py.ini:/etc/frp/frpc.ini
-    frpc_web:
-        image: snowdreamtech/frpc
-        restart: always
-        network_mode: host
-        container_name: frpc_web
-        volumes:
-             - ./frpc_web.ini:/etc/frp/frpc.ini
+             - ./frpc_ssh.ini:/etc/frp/frpc.ini
