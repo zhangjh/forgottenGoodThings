@@ -42,11 +42,11 @@ services:
         container_name: frps_office
         volumes:
             - ./frps_office.ini:/etc/frp/frps.ini
-    frps_wx:
+    frps_ssh:
         image: snowdreamtech/frps
         restart: always
         network_mode: host
-        container_name: frps_wx
+        container_name: frps_ssh
         volumes:
-            - ./frps_wx.ini:/etc/frp/frps.ini
+            - ./frps_ssh.ini:/etc/frp/frps.ini
 
