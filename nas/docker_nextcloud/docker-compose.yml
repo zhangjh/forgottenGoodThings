@@ -33,7 +33,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - /app/nextcloud/mysql:/var/lib/mysql
+      - /mnt/nas/app/nextcloud/mysql:/var/lib/mysql
   
   onlyoffice:
     image: onlyoffice/documentserver
@@ -43,8 +43,8 @@ services:
       - 9001:80
       - 9002:443
     volumes:
-      - /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice
-      - /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data
+      - /mnt/nas/app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice
+      - /mnt/nas/app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data
     environment:
       - JWT_ENABLED=false
 
@@ -57,7 +57,7 @@ services:
     ports:
       - 8081:80
     volumes:
-      - /app/nextcloud/data:/var/www/html
+      - /mnt/nas/app/nextcloud/data:/var/www/html
       - /mnt/nas:/mnt/nas
     links:
       - mysql
