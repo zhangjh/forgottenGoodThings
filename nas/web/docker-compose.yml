@@ -56,8 +56,8 @@ services:
       driver: "json-file"
       options:
         max-size: "200m" 
-    depends_on:
-      - comment
+          #depends_on:
+          #- comment
       
   translation:
     container_name: translation
@@ -68,3 +68,14 @@ services:
       driver: "json-file"
       options:
         max-size: "200m" 
+
+  leanote:
+    container_name: leanote
+    image: jim3ma/leanote:full-featured-2.4
+    network_mode: host
+    depends_on:
+      - mongo
+    restart: always
+    volumes:
+      - /mnt/nas/leanote:/leanote/data
+      - ./app.conf:/leanote/conf/app.conf
