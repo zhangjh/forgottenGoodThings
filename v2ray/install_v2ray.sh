@@ -301,14 +301,11 @@ getData() {
             CERT_FILE="/etc/v2ray/${DOMAIN}.pem"
             KEY_FILE="/etc/v2ray/${DOMAIN}.key"
         else
-            resolve=`curl -sm8 ipget.net/?ip=${DOMAIN}`
-            if [ "$resolve" != "$v4" ] && [ "$resolve" != "$v6" ]; then
-		if echo $resolve | grep -q html; then
-			colorEcho ${BLUE}  " 域名解析失败，请添加域名解析记录或等待DNS同步，稍后再试。"
-		else
-			colorEcho ${BLUE}  " ${DOMAIN} 解析结果：${resolve}"
-		fi
-                colorEcho ${RED}  " 域名未解析到当前服务器IP("${BLUE}"ipv4:"${RED}"${v4} / "${BLUE}"ipv6:"${RED}"${v6} )!"
+	    res=`ping -c 1 ${DOMAIN} | grep -iv ping | head -1 | awk '{print $4}'`
+            #res=`echo -n ${resolve} | grep ${IP}`
+            if [[ -z "${res}" || "${res}" != "${IP}" ]]; then
+                colorEcho ${BLUE}  "${DOMAIN} 解析结果：${resolve}"
+                colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
                 exit 1
             fi
         fi
